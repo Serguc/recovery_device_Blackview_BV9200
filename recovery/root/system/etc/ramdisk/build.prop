@@ -1,0 +1,22 @@
+####################################
+# from generate-common-build-props
+# These properties identify this partition image.
+####################################
+ro.product.bootimage.brand=Blackview
+ro.product.bootimage.device=BV9200
+ro.product.bootimage.manufacturer=blackview
+ro.product.bootimage.model=BV9200
+ro.product.bootimage.name=twrp_BV9200
+ro.bootimage.build.date=Wed Aug  6 18:40:17 CEST 2025
+ro.bootimage.build.date.utc=1754498417
+ro.bootimage.build.fingerprint=Blackview/BV9200_RU/BV9200:12/SP1A.210812.016/1701170717:user/release-keys
+ro.bootimage.build.id=SP2A.220405.004
+ro.bootimage.build.tags=test-keys
+ro.bootimage.build.type=eng
+ro.bootimage.build.version.incremental=eng.root.20250806.184325
+ro.bootimage.build.version.release=12
+ro.bootimage.build.version.release_or_codename=16.1.0
+ro.bootimage.build.version.sdk=32
+# Auto-added by post_process_props.py
+persist.sys.usb.config=none
+# end of file
