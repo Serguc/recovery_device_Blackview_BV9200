@@ -14,7 +14,8 @@
 # limitations under the License.
 #
 
-LOCAL_PATH := device/Blackview/shark
+LOCAL_PATH := device/Blackview/BV9200
+
 
 # Dynamic
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
@@ -48,7 +49,6 @@ AB_OTA_UPDATER := true
 AB_OTA_PARTITIONS += \
     boot \
     dtbo \
-    lk \
     preloader \
     product \
     system \
@@ -56,7 +56,6 @@ AB_OTA_PARTITIONS += \
     vbmeta_system \
     vbmeta_vendor \
     vendor \
-    vendor_boot
     
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
@@ -65,10 +64,10 @@ AB_OTA_POSTINSTALL_CONFIG += \
     POSTINSTALL_OPTIONAL_system=true
 
 # VNDK
-PRODUCT_TARGET_VNDK_VERSION := 32
+PRODUCT_TARGET_VNDK_VERSION := 31
 
 # API
-PRODUCT_SHIPPING_API_LEVEL := 32
+PRODUCT_SHIPPING_API_LEVEL := 30
 
 PRODUCT_PACKAGES_DEBUG += \
     update_engine_client
@@ -95,6 +94,6 @@ TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
 
 # Vendor ramdisk
 PRODUCT_COPY_FILES += \
-     device/Blackview/shark/fstab.emmc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.emmc \
-     device/Blackview/shark/fstab.mt6789:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.mt6789 
+     device/Blackview/BV9200/fstab.emmc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.emmc \
+     device/Blackview/BV9200/fstab.mt6789:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.mt6789 
 
