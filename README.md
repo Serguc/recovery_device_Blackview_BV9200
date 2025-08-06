@@ -1,4 +1,4 @@
-#  Recovery tree of Blackview SHARK 8
+#  Recovery tree of Blackview BV9200
 
 It was announced & released on November 2023.
 
@@ -6,12 +6,12 @@ It was announced & released on November 2023.
 
 Basic   | Spec Sheet
 -------:|:-------------------------
-SoC     | Mediatek Helio G99 (MT6789) (6nm)
-CPU     | Octa-core (2x2.2 GHz Cortex-A76 & 6x2.0 GHz Cortex-A55)
+SoC     | MediaTek Helio G96 (MT6781) (12nm)
+CPU     | Octa-core ( 2x 2.05 GHz ARM Cortex-A76, 6x 2.0 GHz ARM Cortex-A55)
 GPU     | Mali-G57 MC2
 Memory  | 8 GB RAM
-Shipped Android Version | 13.0 with DOKEOS 4
-Storage | 128/256 GB
+Android | 12
+Storage | 256 GB
 Battery | Li-Po 5000 mAh, non-removable
 Display | 6.78-inch, 1080*2460 FHD+ Resolution; Dynamic 120Hz Refresh Rate
 Camera  | 64 MP (Samsung® ISOCELL GW3) and 13 MP (Samsung® ISOCELL 3L6)
