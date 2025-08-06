@@ -14,6 +14,6 @@
 # limitations under the License.
 #
 
-PRODUCT_MAKEFILES := $(LOCAL_DIR)/twrp_shark8.mk
+PRODUCT_MAKEFILES := $(LOCAL_DIR)/twrp_BV9200.mk
 
-COMMON_LUNCH_CHOICES := twrp_shark-eng
+COMMON_LUNCH_CHOICES := twrp_BV9200-eng
