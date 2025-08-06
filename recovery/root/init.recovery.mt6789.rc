@@ -1,0 +1,197 @@
+import /init.recovery.trustkernel.rc
+
+on init
+    setprop sys.usb.configfs 1
+    setprop sys.usb.controller "11201000.usb0"
+    setprop sys.usb.ffs.aio_compat 1
+    export LD_LIBRARY_PATH /system/lib64:/vendor/lib64:/vendor/lib64/hw:/system/lib64/hw
+
+on fs
+    wait /dev/block/platform/soc/112b0000.ufshci
+    symlink /dev/block/platform/soc/112b0000.ufshci /dev/block/bootdevice
+
+    chmod +x /vendor/bin/*
+    chmod +x /vendor/bin/hw/*
+    # */
+
+    mkdir /mnt/vendor 0755 system system
+    mkdir /mnt/vendor/protect_f 0770 system system
+    mkdir /mnt/vendor/protect_s 0770 system system
+    #mkdir /mnt/vendor/persist   0755 system system
+    mkdir /mnt/vendor/nvdata    0771 system system
+    mkdir /mnt/vendor/nvcfg     0771 system system
+    mount ext4 /dev/block/by-name/protect1 /mnt/vendor/protect_f rw wait
+    mount ext4 /dev/block/by-name/protect2 /mnt/vendor/protect_s rw wait
+    #mount ext4 /dev/block/by-name/persist  /mnt/vendor/persist   rw wait
+    mount ext4 /dev/block/by-name/nvdata   /mnt/vendor/nvdata    rw wait
+    mount ext4 /dev/block/by-name/nvcfg    /mnt/vendor/nvcfg     rw wait
+    #mkdir /mnt/vendor/persist/t6_twrp    0755 system system
+    mkdir /mnt/vendor/protect_f/tee_twrp 0755 system system
+    exec u:r:recovery:s0 system -- /vendor/bin/init_trustkernel_twrp.sh
+
+    #mkdir /data/misc 01771 system misc encryption=Require
+    #mkdir /data/misc
+    #mkdir /data/misc/keystore 0700 keystore keystore
+    
+    install_keyring
+    setprop crypto.ready 1 
+
+# We need vold early for metadata encryption
+#on early-fs
+#    start vold
+
+on post-fs
+    #chown system system /mnt/vendor/protect_f
+    #chmod 0770 /mnt/vendor/protect_f
+
+    #chown system system /mnt/vendor/protect_s
+    #chmod 0770 /mnt/vendor/protect_s
+
+    #chown system system /mnt/vendor/nvcfg
+    #chmod 0771 /mnt/vendor/nvcfg
+    #restorecon_recursive /mnt/vendor/nvcfg
+
+    #chown root system /mnt/vendor/nvdata
+    #chmod 0771 /mnt/vendor/nvdata
+    #mkdir /mnt/vendor/nvdata/media 0771 media audio
+    #restorecon_recursive /mnt/vendor/nvdata
+
+    #chown system system /proc/bootprof
+    
+    #start boot-hal-1-2
+
+    # Support A/B feature for EMMC and UFS boot region
+    symlink /dev/block/sda /dev/block/mmcblk0boot0
+    symlink /dev/block/sdb /dev/block/mmcblk0boot1
+    symlink /dev/block/mmcblk0boot0 /dev/block/platform/bootdevice/by-name/preloader_a
+    symlink /dev/block/mmcblk0boot1 /dev/block/platform/bootdevice/by-name/preloader_b
+
+    # Support A/B feature for combo emmc and ufs OTA update
+    symlink /dev/block/platform/bootdevice/by-name/preloader_a /dev/block/platform/bootdevice/by-name/preloader_emmc_a
+    symlink /dev/block/platform/bootdevice/by-name/preloader_b /dev/block/platform/bootdevice/by-name/preloader_emmc_b
+    symlink /dev/block/platform/bootdevice/by-name/preloader_a /dev/block/platform/bootdevice/by-name/preloader_ufs_a
+    symlink /dev/block/platform/bootdevice/by-name/preloader_b /dev/block/platform/bootdevice/by-name/preloader_ufs_b
+    symlink /dev/block/platform/bootdevice/by-name/preloader_b /dev/block/by-name/preloader_ufs_b
+
+    #mkdir /data/misc 01771 system misc encryption=Require
+    #mkdir /data/misc/keystore 0700 keystore keystore
+    # work around b/183668221
+    #restorecon /data/misc /data/misc/keystore
+
+    # Boot level 30
+    # odsign signing keys have MAX_BOOT_LEVEL=30
+    # This is currently the earliest boot level, but we start at 30
+    # to leave room for earlier levels.
+    setprop keystore.boot_level 30
+
+    # Now that /data is mounted and we have created /data/misc/keystore,
+    # we can tell keystore to stop allowing use of early-boot keys,
+    # and access its database for the first time to support creation and
+    # use of MAX_BOOT_LEVEL keys.
+    #exec - system system -- /system/bin/vdc keymaster earlyBootEnded
+
+on post-fs-data
+    # Touch Panel
+    chown root diag /sys/module/tpd_setting/parameters/tpd_calmat
+    chown root diag /sys/module/tpd_setting/parameters/tpd_em_debounce_time
+    chown root diag /sys/module/tpd_debug/parameters/tpd_em_log
+    chown root diag /sys/module/tpd_debug/parameters/tpd_em_log_to_fs
+
+    # Touch Panel
+    # chmod 0664 /dev/touch
+    chown root diag /sys/module/tpd_setting/parameters/tpd_calmat
+    chown root diag /sys/module/tpd_setting/parameters/tpd_em_debounce_time
+    chown root diag /sys/module/tpd_setting/parameters/tpd_mode
+    chown root diag /sys/module/tpd_setting/parameters/tpd_em_debounce_time0
+    chown root diag /sys/module/tpd_setting/parameters/tpd_em_debounce_time1
+    chown root diag /sys/module/tpd_setting/parameters/tpd_em_spl_num
+    chown root diag /sys/module/tpd_setting/parameters/tpd_em_pressure_threshold
+    chown root diag /sys/module/tpd_setting/parameters/tpd_em_auto_time_interval
+    chown root diag /sys/module/tpd_setting/parameters/tpd_em_sample_cnt
+    chown root diag /sys/module/tpd_setting/parameters/tpd_em_asamp
+    chown root diag /sys/module/tpd_debug/parameters/tpd_em_log
+    chown root diag /sys/module/tpd_debug/parameters/tpd_em_log_to_fs
+
+on boot
+    exec u:r:update_engine:s0 root root -- /system/bin/mtk_plpath_utils
+    start mtk.plpath.utils.link
+    start health-hal-2-1
+    start system_suspend
+
+on property:persist.vendor.mtk.pl_lnk=1
+    symlink /dev/block/mapper/pl_a /dev/block/by-name/preloader_raw_a
+    symlink /dev/block/mapper/pl_b /dev/block/by-name/preloader_raw_b
+    symlink /dev/block/mapper/pl_a /dev/block/platform/bootdevice/by-name/preloader_raw_a
+    symlink /dev/block/mapper/pl_b /dev/block/platform/bootdevice/by-name/preloader_raw_b
+
+service mtk.plpath.utils.link /system/bin/mtk_plpath_utils
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+    seclabel u:r:recovery:s0
+
+service system_suspend /system/bin/hw/android.system.suspend-service
+    class early_hal
+    interface aidl android.system.suspend.ISystemSuspend/default
+    user root
+    group root wakelock
+    capabilities BLOCK_SUSPEND
+    disabled
+    seclabel u:r:recovery:s0
+
+service vendor.gatekeeper-1-0 /vendor/bin/hw/android.hardware.gatekeeper@1.0-service
+    interface android.hardware.gatekeeper@1.0::IGatekeeper default
+    class hal
+    user root
+    group root
+    disabled
+    seclabel u:r:recovery:s0
+
+service vendor.keymint-trustkernel /vendor/bin/hw/android.hardware.security.keymint-service.trustkernel
+    class early_hal
+    user root
+    group root
+    disabled
+    seclabel u:r:recovery:s0
+
+#service keystore2 /system/bin/keystore2 /data/misc/keystore
+#    #class early_hal
+#    user root
+#    group root readproc
+#    #task_profiles ProcessCapacityHigh
+#    seclabel u:r:recovery:s0
+
+#on property:ro.crypto.state=encrypted && property:ro.crypto.type=file
+#    install_keyring
+
+on property:crypto.ready=1
+    start vendor.keymint-trustkernel
+
+on property:vendor.sys.listener.registered=true
+    #start teed
+    start vendor.gatekeeper-1-0
+    start vendor.keymint-trustkernel
+   
+on property:hwservicemanager.ready=true
+    #start teed
+    start vendor.gatekeeper-1-0
+    start vendor.keymint-trustkernel
+
+on property:ro.crypto.state=unsupported
+    stop teed
+    stop vendor.gatekeeper-1-0
+    stop vendor.keymint-trustkernel
+
+on property:ro.crypto.state=unencrypted
+    stop teed
+    stop vendor.gatekeeper-1-0
+    stop vendor.keymint-trustkernel
+
+#on property:twrp.all.users.decrypted=true && property:twrp.decrypt.done=true
+on property:twrp.decrypt.done=true
+    #setprop crypto.ready 0
+    stop teed
+    stop vendor.gatekeeper-1-0
+    stop vendor.keymint-trustkernel

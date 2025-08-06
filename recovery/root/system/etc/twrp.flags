@@ -1,0 +1,73 @@
+#<src>              <type> <mnt_point>                                     <flags>
+/metadata           ext4   /dev/block/by-name/metadata                     flags=display="Metadata";backup=1
+/data               f2fs   /dev/block/by-name/userdata                     flags=fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized,keydirectory=/metadata/vold/metadata_encryption,fsverity
+/lk1                emmc   /dev/block/by-name/lk1                          flags=display="lk1"
+/bootloader2        emmc   /dev/block/by-name/bootloader2                  flags=display=bootloader2
+/persistent         emmc   /dev/block/by-name/frp                          flags=display="Persistent"
+/para               emmc   /dev/block/by-name/para                         flags=display="Para"
+/misc               emmc   /dev/block/by-name/misc                         flags=display="Misc"
+/boot               emmc   /dev/block/by-name/boot                         flags=display="Boot";slotselect;backup=1;flashimg=1
+/vendor_boot        emmc   /dev/block/by-name/vendor_boot                  flags=display="Vendor_boot";slotselect;backup=1;flashimg=1
+/vbmeta_vendor      emmc   /dev/block/by-name/vbmeta_vendor                flags=display="VBMeta_Vendor";slotselect;backup=1;flashimg=1
+/vbmeta_system      emmc   /dev/block/by-name/vbmeta_system                flags=display="VBMeta_System";slotselect;backup=1;flashimg=1
+/logo               emmc   /dev/block/by-name/logo                         flags=display="Logo";slotselect;backup=1
+/dtbo               emmc   /dev/block/by-name/dtbo                         flags=display="dtbo";slotselect;backup=1
+/vbmeta             emmc   /dev/block/by-name/vbmeta                       flags=display="VBMeta";slotselect;flashimg=1
+
+#IMEI
+/nvram              emmc   /dev/block/by-name/nvram                        flags=backup;display="IMEI"
+/protect_f_image     emmc   /dev/block/by-name/protect1                    flags=display="Protect_Image";backup=1;flashimg=1
+/protect_s_image     emmc   /dev/block/by-name/protect2                    flags=backup=1;subpartitionof=/protect_f
+/mnt/vendor/persist           ext4   /dev/block/by-name/persist            flags=display="Persist"
+/mnt/vendor/persist_image      emmc   /dev/block/by-name/persist           flags=display="Persist_image";backup=1;flashimg=1
+/mnt/vendor/protect_f         ext4   /dev/block/by-name/protect1           flags=display="Protect_f";backup=1
+/mnt/vendor/protect_s           ext4   /dev/block/by-name/protect2         flags=display="Protect_s";backup=1
+/tee1                     emmc     /dev/block/by-name/tee1
+/tee2                     emmc     /dev/block/by-name/tee2
+
+# Others Partitions
+/proinfo            emmc   /dev/block/by-name/proinfo                      flags=display="Proinfo"
+/seccfg             emmc  /dev/block/by-name/seccfg
+/scp1                     emmc     /dev/block/by-name/scp1
+/scp2                     emmc     /dev/block/by-name/scp2
+/sspm1                    emmc     /dev/block/by-name/sspm1
+/sspm2                    emmc     /dev/block/by-name/sspm2
+/dpm1                     emmc     /dev/block/by-name/dpm1
+/dpm2                     emmc     /dev/block/by-name/dpm2
+/mcupm1                   emmc     /dev/block/by-name/mcupm1
+/mcupm2                   emmc     /dev/block/by-name/mcupm2
+/md1img                   emmc     /dev/block/by-name/md1img
+/md1dsp                   emmc     /dev/block/by-name/md1dsp
+/md1arm7                  emmc     /dev/block/by-name/md1arm7
+/md3img                   emmc     /dev/block/by-name/md3img
+/gz1                      emmc     /dev/block/by-name/gz1
+/gz2                      emmc     /dev/block/by-name/gz2
+/ccu                      emmc     /dev/block/by-name/ccu
+/vcp                      emmc     /dev/block/by-name/vcp
+/gpueb                    emmc     /dev/block/by-name/gpueb
+/mcf_ota                  emmc     /dev/block/by-name/mcf_ota
+/mvpu_algo1               emmc     /dev/block/by-name/mvpu_algo1
+/mvpu_algo2               emmc     /dev/block/by-name/mvpu_algo2
+/apusys1                  emmc     /dev/block/by-name/apusys1
+/apusys2                  emmc     /dev/block/by-name/apusys2
+/spmfw                    emmc     /dev/block/by-name/spmfw
+/pi_img                   emmc     /dev/block/by-name/pi_img
+/expdb                    emmc     /dev/block/by-name/expdb
+/boot_para                emmc     /dev/block/by-name/boot_para
+/otp                      emmc     /dev/block/by-name/otp
+
+# Dynamic partition
+/system                 ext4    /dev/block/mapper/system                   flags=backup=0;display="System"slotselect;flashimg=1
+/system_image           emmc    /dev/block/mapper/system                   flags=backup=1;display="System_Image"backup=1
+/vendor                 ext4    /dev/block/mapper/vendor                   flags=backup=0;display="Vendor"slotselect;flashimg=1
+/vendor_image           emmc    /dev/block/mapper/vendor                   flags=backup=1;display="Vendor_Image"backup=1
+/product                ext4    /dev/block/mapper/product                  flags=backup=0;display="Product"slotselect;flashimg=1
+/product_image          emmc    /dev/block/mapper/product                  flags=backup=1;display="Product_Image"backup=1
+/vendor_dlkm            ext4   /dev/block/mapper/vendor_dlkm               flags=backup=1;display="VendorDLKM";slotselect;flashimg=1
+/vendor_dlkm_image      emmc   /dev/block/mapper/vendor_dlkm               flags=backup=1;display="VendorDLKM_Image";backup=1
+/odm_dlkm_image         ext4   /dev/block/mapper/odm_dlkm                  flags=backup=1;display="OdmDLKM";slotselect;flashimg=1
+/odm_dlkm_image         emmc   /dev/block/mapper/odm_dlkm                  flags=backup=1;display="OdmDLKM_Image";backup=1
+
+# Removable Storage
+/external_sd        auto   /dev/block/mmcblk1p1 /dev/block/mmcblk0p1       flags=display="External_SDcard";storage;wipeingui;removable
+
