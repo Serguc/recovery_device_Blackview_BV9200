@@ -95,5 +95,5 @@ TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
 # Vendor ramdisk
 PRODUCT_COPY_FILES += \
      device/Blackview/BV9200/fstab.emmc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.emmc \
-     device/Blackview/BV9200/fstab.mt6789:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.mt6789 
+     device/Blackview/BV9200/fstab.mt6781:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.mt6781 
 
