@@ -1,6 +1,6 @@
 #  Recovery tree of Blackview BV9200
 
-It was announced & released on November 2023.
+It was announced & released on November 2022.
 
 ## Device specifications
 
