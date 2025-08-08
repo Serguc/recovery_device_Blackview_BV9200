@@ -14,7 +14,7 @@ Android | 12
 Storage | 256 GB
 Battery | Li-Po 5000 mAh, non-removable
 Display | 6,58-inch, 1080 x 2408 FHD+ Resolution; Dynamic 120Hz Refresh Rate
-Camera  | 64 MP (Samsung® ISOCELL GW3) and 13 MP (Samsung® ISOCELL 3L6)
+Camera  | 50 MP (Samsung® ISOCELL GW3) and 13 MP (Samsung® ISOCELL 3L6)
 Demensions | 81,8 x 174,45 x 13,6 mm
 Weight  | 310 g
 ## Device picture
