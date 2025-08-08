@@ -180,3 +180,16 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := /config/usb_gadget/g1/functions/mass_storage.
 # Debug
 TARGET_USES_LOGD := true
 TWRP_INCLUDE_LOGCAT := true
+
+# Haptics
+TW_SUPPORT_INPUT_AIDL_HAPTICS := true
+
+TW_LOAD_VENDOR_BOOT_MODULES := true
+TW_LOAD_VENDOR_MODULES_EXCLUDE_GKI := true
+TW_LOAD_PREBUILT_MODULES := true
+
+# Apex
+TW_EXCLUDE_APEX=true
+
+# Maintainer specific settings
+#TW_DEVICE_VERSION := Serguc
