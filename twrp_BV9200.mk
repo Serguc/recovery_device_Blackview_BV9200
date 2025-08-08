@@ -28,7 +28,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 $(call inherit-product, vendor/twrp/config/common.mk)
 
 # Device specific configs.
-$(call inherit-product, device/blackview/BV9200/device.mk)
+$(call inherit-product, device/Blackview/BV9200/device.mk)
 
 ## Device identifier. This must come after all inclusions.
 PRODUCT_DEVICE := BV9200
@@ -36,5 +36,4 @@ PRODUCT_NAME := twrp_BV9200
 PRODUCT_BRAND := Blackview
 PRODUCT_MODEL := BV9200
 PRODUCT_MANUFACTURER := Blackview
-PRODUCT_RELEASE_NAME := Shark8
-
+PRODUCT_RELEASE_NAME := BV9200_RU
