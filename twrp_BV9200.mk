@@ -16,6 +16,7 @@
 
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 
 # Enable project quotas and casefolding for emulated storage without sdcardfs
@@ -36,3 +37,10 @@ PRODUCT_NAME := twrp_BV9200
 PRODUCT_BRAND := Blackview
 PRODUCT_MODEL := BV9200
 PRODUCT_MANUFACTURER := Blackview
+
+PRODUCT_GMS_CLIENTID_BASE := android-hct
+
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    PRIVATE_BUILD_DESC="full_k71v1_64_bsp-user 11 RP1A.200720.011 p1k61v164bspP33 release-keys"
+
+BUILD_FINGERPRINT := Blackview/A100_RU/A100:11/RP1A.200720.011/1658197966:user/release-keys
