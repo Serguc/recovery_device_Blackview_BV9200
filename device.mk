@@ -16,6 +16,12 @@
 
 LOCAL_PATH := device/Blackview/BV9200
 
+# VNDK
+PRODUCT_TARGET_VNDK_VERSION := 31
+
+# API
+PRODUCT_SHIPPING_API_LEVEL := 31
+
 # Dynamic
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
@@ -26,6 +32,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_ven
 # Bootctrl
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.2-mtkimpl \
+    android.hardware.boot@1.2-service \
     android.hardware.boot@1.2-mtkimpl.recovery
 
 PRODUCT_PACKAGES_DEBUG += \
@@ -40,6 +47,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.health@2.1-impl \
     android.hardware.health@2.1-service \
+    android.hardware.health@2.1-impl.recovery
     
 # AB
 AB_OTA_UPDATER := true
@@ -61,12 +69,6 @@ AB_OTA_POSTINSTALL_CONFIG += \
     POSTINSTALL_PATH_system=system/bin/otapreopt_script \
     FILESYSTEM_TYPE_system=ext4 \
     POSTINSTALL_OPTIONAL_system=true
-
-# VNDK
-PRODUCT_TARGET_VNDK_VERSION := 31
-
-# API
-PRODUCT_SHIPPING_API_LEVEL := 31
 
 PRODUCT_PACKAGES_DEBUG += \
     update_engine_client
