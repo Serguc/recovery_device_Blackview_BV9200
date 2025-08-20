@@ -104,6 +104,8 @@ TARGET_PLATFORM_DEVICE_BASE := /devices/soc/
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 33554432
 
+# Security patch level
+VENDOR_SECURITY_PATCH := 2023-11-05
 
 # Dynamic Partition
 TARGET_COPY_OUT_PRODUCT := product
