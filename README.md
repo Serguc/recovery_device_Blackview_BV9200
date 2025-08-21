@@ -14,7 +14,7 @@ Android | 12.0 / Doke OS
 Storage | 256 GB
 Battery | Li-Po 5000 mAh, non-removable
 Display |  6.58 in, IPS, 1080 x 2408 pixels, 24 bit
-Camera  | 
+Camera  | 50 МП Samsung JN1, 1/2.76,8 МП 120°,
 Demensions | 81,8 x 174,45 x 13,6 mm
 Weight  | 310 g
 ## Device picture
