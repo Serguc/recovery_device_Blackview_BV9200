@@ -10,7 +10,7 @@ SoC     | MediaTek Helio G96 (MT6781) (12nm)
 CPU     | Octa-core ( 2x 2.05 GHz ARM Cortex-A76, 6x 2.0 GHz ARM Cortex-A55)
 GPU     | ARM Mali-G57 MC2
 Memory  | 8 GB RAM (LPDDR4X)
-Android | 12.0 / Doke OS /
+Android | 12.0 / Doke OS
 Storage | 256 GB
 Battery | Li-Po 5000 mAh, non-removable
 Display |  6.58 in, IPS, 1080 x 2408 pixels, 24 bit
