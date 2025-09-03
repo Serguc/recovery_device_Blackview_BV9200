@@ -57,12 +57,3 @@ on boot
     start boot-hal-1-2
     start health-hal-2-1
 	
-on boot
-    start load_ts_firmware
-
-service load_ts_firmware /vendor/bin/load_ts_firmware.sh
-    user root
-    group root
-    oneshot
-    disabled
-    seclabel u:r:recovery:s0
