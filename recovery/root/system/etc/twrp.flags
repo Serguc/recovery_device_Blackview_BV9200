@@ -7,7 +7,6 @@
 /para               emmc   /dev/block/by-name/para                         flags=display="Para"
 /misc               emmc   /dev/block/by-name/misc                         flags=display="Misc"
 /boot               emmc   /dev/block/by-name/boot                         flags=display="Boot";slotselect;backup=1;flashimg=1
-/vendor_boot        emmc   /dev/block/by-name/vendor_boot                  flags=display="Vendor_boot";slotselect;backup=1;flashimg=1
 /vbmeta_vendor      emmc   /dev/block/by-name/vbmeta_vendor                flags=display="VBMeta_Vendor";slotselect;backup=1;flashimg=1
 /vbmeta_system      emmc   /dev/block/by-name/vbmeta_system                flags=display="VBMeta_System";slotselect;backup=1;flashimg=1
 /logo               emmc   /dev/block/by-name/logo                         flags=display="Logo";slotselect;backup=1
@@ -63,10 +62,6 @@
 /vendor_image           emmc    /dev/block/mapper/vendor                   flags=backup=1;display="Vendor_Image"backup=1
 /product                ext4    /dev/block/mapper/product                  flags=backup=0;display="Product"slotselect;flashimg=1
 /product_image          emmc    /dev/block/mapper/product                  flags=backup=1;display="Product_Image"backup=1
-/vendor_dlkm            ext4   /dev/block/mapper/vendor_dlkm               flags=backup=1;display="VendorDLKM";slotselect;flashimg=1
-/vendor_dlkm_image      emmc   /dev/block/mapper/vendor_dlkm               flags=backup=1;display="VendorDLKM_Image";backup=1
-/odm_dlkm_image         ext4   /dev/block/mapper/odm_dlkm                  flags=backup=1;display="OdmDLKM";slotselect;flashimg=1
-/odm_dlkm_image         emmc   /dev/block/mapper/odm_dlkm                  flags=backup=1;display="OdmDLKM_Image";backup=1
 
 # Removable Storage
 /external_sd        auto   /dev/block/mmcblk1p1 /dev/block/mmcblk0p1       flags=display="External_SDcard";storage;wipeingui;removable
