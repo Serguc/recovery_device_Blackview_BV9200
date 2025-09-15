@@ -50,5 +50,5 @@
 /product_image          emmc    /dev/block/mapper/product                  flags=backup=1;display="Product_Image"backup=1
 
 # Removable Storage
-/external_sd        auto   /dev/block/mmcblk1p1 /dev/block/mmcblk0p1       flags=display="External_SDcard";storage;wipeingui;removable
+/sdcard_dev2           auto   /dev/block/mmcblk1 /dev/block/mmcblk0       flags=display="External_SDcard";storage;wipeingui;removable
 
