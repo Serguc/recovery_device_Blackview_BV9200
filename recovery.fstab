@@ -1,104 +1,74 @@
-як/system ext4 system_a0
+/system ext4 system_a
 
-1/vendor ext4 vendor_a 0
+/vendor ext4 vendor_a 
 
-2/product ext4 product_a0
+/product ext4 product_a
 
-3/metadata
+/metadata ext4 /dev/block/by-name/metada
 
-ext4 /dev/block/by-name/metada
+/data f2fs /dev/block/by-name/userdata
 
-4/data f2fs /dev/block/by-name/userdata
+/mnt/vendor/protect_f ext4 /dev/block/by-name/protect1
 
-5/mnt/vendor/protect_f
+/mnt/vendor/protect_s ext4 /dev/block/by-name/protect2
 
-ext4 /dev/block/by
+/mnt/vendor/nvdata ext4 /dev/block/by-name/nvdata
 
-6/mnt/vendor/protect_s
+/mnt/vendor/nvcfg ext4 /dev/block/by-name/nvcfg
 
-ext4 /dev/block/by
-
-7/mnt/vendor/nvdata
-
-ext4 /dev/block/by-na
-
-8/mnt/vendor/nvcfg
-
-ext4 /dev/block/by-nam
-
-9/mnt/vendor/persist ext4 /dev/block/by-n
-
-10
+/mnt/vendor/persist ext4 /dev/block/by-name/persist
 
 auto auto /devices/platform/externdevic
 
-11
+auto vfat /devices/platform/mt_usb* 
 
-auto vfat /devices/platform/mt_usb* 0
+/persistent emmc /dev/block/by-name/frp
 
-12/persistent emmc /dev/block/by-name/frp
+/nvram emmc /dev/block/by-name/nvram
 
-13/nvram emmc /dev/block/by-name/nvram
-
-14/proinfo emmc /dev/block/by-name/proinf
-
-15
+/proinfo emmc /dev/block/by-name/proinf
 
 /bootloader emmc /dev/block/by-name/lk
 
-16/bootloader2 emmc /dev/block/by-name/lk
+/bootloader2 emmc /dev/block/by-name/lk
 
-17/para emmc /dev/block/by-name/para
+/para emmc /dev/block/by-name/para
 
-18/misc emmc /dev/block/by-name/misc
+/misc emmc /dev/block/by-name/misc
 
-19/boot emmc /dev/block/by-name/boot_a0
+/boot emmc /dev/block/by-name/boot_a0
 
-20/vbmeta_vendor emmc /dev/block/by-name/
+/vbmeta_vendor emmc /dev/block/by-name/
 
-0
+/vbmeta_system emmc /dev/block/by-name/
 
-21/vbmeta_system emmc /dev/block/by-name/
+/logo emmc /dev/block/by-name/logo
 
-0
+/expdb emmc /dev/block/by-name/expdb
 
-22/logo
+/seccfg emmc /dev/block/by-name/seccfg
 
-emmc /dev/block/by-name/logo 0
+/teel emmc /dev/block/by-name/teel 
 
-23/expdb
+/tee2 emmc /dev/block/by-name/tee20
 
-emmc /dev/block/by-name/expdb
+/scp1 emmc /dev/block/by-name/scp10
 
-24/seccfg
+/scp2 emmc /dev/block/by-name/scp20
 
-emmc /dev/block/by-name/seccfg
+/sspm_1 emmc /dev/block/by-name/sspm_1
 
-25/teel
+/sspm_2 emmc /dev/block/by-name/sspm_2
 
-emmc /dev/block/by-name/teel 0
+/mdlimg emmc /dev/block/by-name/md1img
 
-26/tee2 emmc /dev/block/by-name/tee20
+/md1dsp emmc /dev/block/by-name/md1dsp
 
-27/scp1
-
-emmc /dev/block/by-name/scp10
-
-28/scp2 emmc /dev/block/by-name/scp20
-
-29/sspm_1 emmc /dev/block/by-name/sspm_1
-
-30/sspm_2 emmc /dev/block/by-name/sspm_2
-
-31/mdlimg emmc /dev/block/by-name/md1img
-
-32/md1dsp emmc /dev/block/by-name/md1dsp
-
-/gz1 emmc /dev/block/by-name/gz1 0
+/gz1 emmc /dev/block/by-name/gz1 
 
 /gz2 emmc /dev/block/by-name/gz20
 
-/spmfw emmc /dev/block/by-name/spmfw0
+/spmfw emmc /dev/block/by-name/spmfw
 
 /pi_img emmc /dev/block/by-name/pi_img
 
@@ -110,5 +80,5 @@ otp emmc /dev/block/by-name/otp
 
 vbmeta emmc /dev/block/by-name/vbmeta
 
-tmp ramdisk ramdisk 0
+tmp ramdisk ramdisk 
 
