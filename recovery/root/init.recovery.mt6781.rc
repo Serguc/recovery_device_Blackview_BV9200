@@ -76,7 +76,7 @@ service vendor.vibrator-default /vendor/bin/hw/android.hardware.vibrator-service
     disabled
     seclabel u:r:recovery:s0
 
-service vendor.gatekeeper /vendor/bin/hw/android.hardware.gatekeeper-service.trustkernel
+service vendor.gatekeeper /vendor/bin/hw/android.hardware.gatekeeper-service
     class hal
     interface aidl android.hardware.gatekeeper.IGatekeeper/default
     user system
@@ -84,12 +84,8 @@ service vendor.gatekeeper /vendor/bin/hw/android.hardware.gatekeeper-service.tru
     disabled
     seclabel u:r:recovery:s0
 
-service vendor.keymint /vendor/bin/hw/android.hardware.security.keymint@3.0-service.trustkernel
+service vendor.keymaster-4-1-trustkernel /vendor/bin/hw/android.hardware.keymaster@4.1-service.trustkernel
     class early_hal
-    interface aidl android.hardware.security.keymint.IKeyMintDevice/default
-    interface aidl android.hardware.security.keymint.IRemotelyProvisionedComponent/default
-    interface aidl android.hardware.security.sharedsecret.ISharedSecret/default
-    interface aidl android.hardware.security.secureclock.ISecureClock/default
     user system
     group system drmrpc
     disabled
@@ -102,46 +98,38 @@ on property:ro.crypto.state=encrypted && property:ro.crypto.type=file
     setprop crypto.ready 1
 
 on property:crypto.ready=1
-    write /proc/bootprof "crypto: start vendor.keymint"
-    start vendor.keymint
+    write /proc/bootprof "crypto: start "vendor.keymaster-4-1-trustkernel"
+    start vendor.keymaster-4-1-trustkernel
 
 on property:vendor.sys.listener.registered=true
     #start teed
     start vendor.gatekeeper
-    start vendor.keymint
+    start vendor.keymaster-4-1-trustkernel
 
 on property:hwservicemanager.ready=true
     #start teed
     start vendor.gatekeeper
-    start vendor.keymint
+    start vendor.keymaster-4-1-trustkernel
 
 on property:ro.crypto.state=unsupported
     stop teed
     stop vendor.gatekeeper
-    stop vendor.keymint
+    stop vendor.keymaster-4-1-trustkernel
 
 on property:ro.crypto.state=unencrypted
     stop teed
     stop vendor.gatekeeper
-    stop vendor.keymint
+    stop vendor.keymaster-4-1-trustkernel
 
 on property:twrp.all.users.decrypted=true
     stop teed
     stop vendor.gatekeeper
-    stop vendor.keymint
+    stop vendor.keymaster-4-1-trustkernel
 
 on property:crypto.ready=0
     stop teed
     stop vendor.gatekeeper
-    stop vendor.keymint
-
-
-
-
-
-
-
-
+    stop vendor.keymaster-4-1-trustkernel
 
 on boot
     start boot-hal-1-2
