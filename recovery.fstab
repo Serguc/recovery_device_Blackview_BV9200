@@ -36,7 +36,8 @@ auto vfat /devices/platform/mt_usb*
 /spmfw emmc /dev/block/by-name/spmfw
 /pi_img emmc /dev/block/by-name/pi_img
 /boot_para emmc /dev/block/by-name/boot
-dtbo emmc /dev/block/by-name/dtbo
-otp emmc /dev/block/by-name/otp
-vbmeta emmc /dev/block/by-name/vbmeta
-tmp ramdisk ramdisk 
+/dtbo emmc /dev/block/by-name/dtbo
+/otp emmc /dev/block/by-name/otp
+/vbmeta emmc /dev/block/by-name/vbmeta
+/tmp ramdisk ramdisk 
+/sdcard_dev2 vfat /dev/block/mmcblk0
