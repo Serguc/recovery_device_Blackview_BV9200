@@ -1,41 +1,114 @@
-/system                   ext4     system                                                   ro wait,slotselect,avb=vbmeta_system,logical,first_stage_mount,avb_keys=/avb/q-gsi.avbpubkey:/avb/r-gsi.avbpubkey:/avb/s-gsi.avbpubkey
-/vendor                   ext4     vendor                                                   ro wait,slotselect,avb,logical,first_stage_mount
-/product                  ext4     product                                                  ro wait,slotselect,avb,logical,first_stage_mount
-/metadata                 ext4     /dev/block/by-name/metadata                              noatime,nosuid,nodev,discard wait,check,formattable,first_stage_mount
-/data                     ext4     /dev/block/by-name/userdata                              noatime,nosuid,nodev,discard,noflush_merge,fsync_mode=nobarrier,reserve_root=134217,resgid=1065,inlinecrypt wait,check,formattable,quota,latemount,resize,reservedsize=128m,checkpoint=fs,fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized,keydirectory=/metadata/vold/metadata_encryption,fsverity
-/mnt/vendor/protect_f     ext4     /dev/block/platform/bootdevice/by-name/protect1          noatime,nosuid,nodev,noauto_da_alloc,commit=1,nodelalloc wait,check,formattable
-/mnt/vendor/protect_s     ext4     /dev/block/platform/bootdevice/by-name/protect2          noatime,nosuid,nodev,noauto_da_alloc,commit=1,nodelalloc wait,check,formattable
-/mnt/vendor/nvdata        ext4     /dev/block/platform/bootdevice/by-name/nvdata            noatime,nosuid,nodev,noauto_da_alloc,commit=1,nodelalloc wait,check,formattable
-/mnt/vendor/nvcfg         ext4     /dev/block/platform/bootdevice/by-name/nvcfg             noatime,nosuid,nodev,noauto_da_alloc,commit=1,nodelalloc wait,check,formattable
-/mnt/vendor/persist       ext4     /dev/block/platform/bootdevice/by-name/persist           noatime,nosuid,nodev,noauto_da_alloc,commit=1,nodelalloc wait,check,formattable
-auto                      auto     /devices/platform/externdevice*                          auto auto defaults voldmanaged=sdcard1:auto,encryptable=userdata
-auto                      vfat     /devices/platform/usb3_xhci*                             auto vfat defaults voldmanaged=usbotg:auto
-/persistent               emmc     /dev/block/by-name/frp                                   defaults defaults
-/nvram                    emmc     /dev/block/by-name/nvram                                 defaults defaults
-/proinfo                  emmc     /dev/block/by-name/proinfo                               defaults defaults
-/bootloader               emmc     /dev/block/by-name/lk                                    defaults defaults
-/bootloader2              emmc     /dev/block/by-name/lk2                                   defaults defaults
-/misc                     emmc     /dev/block/by-name/para                                  defaults defaults
-/boot                     emmc     /dev/block/by-name/boot                                  defaults defaults
-/vbmeta_vendor            emmc     /dev/block/by-name/vbmeta_vendor                         defaults first_stage_mount,nofail,slotselect
-/vbmeta_system            emmc     /dev/block/by-name/vbmeta_system                         defaults first_stage_mount,nofail,slotselect,avb=vbmeta
-/logo                     emmc     /dev/block/by-name/logo                                  defaults defaults
-/expdb                    emmc     /dev/block/by-name/expdb                                 defaults defaults
-/seccfg                   emmc     /dev/block/by-name/seccfg                                defaults defaults
-/tee1                     emmc     /dev/block/by-name/tee1                                  defaults defaults
-/tee2                     emmc     /dev/block/by-name/tee2                                  defaults defaults
-/scp1                     emmc     /dev/block/by-name/scp1                                  defaults defaults
-/scp2                     emmc     /dev/block/by-name/scp2                                  defaults defaults
-/sspm_1                   emmc     /dev/block/by-name/sspm_1                                defaults defaults
-/sspm_2                   emmc     /dev/block/by-name/sspm_2                                defaults defaults
-/md1img                   emmc     /dev/block/by-name/md1img                                defaults defaults
-/md1dsp                   emmc     /dev/block/by-name/md1dsp                                defaults defaults
-/md3img                   emmc     /dev/block/by-name/md3img                                defaults defaults
-/gz1                      emmc     /dev/block/by-name/gz1                                   defaults defaults
-/gz2                      emmc     /dev/block/by-name/gz2                                   defaults defaults
-/spmfw                    emmc     /dev/block/by-name/spmfw                                 defaults defaults
-/boot_para                emmc     /dev/block/by-name/boot_para                             defaults defaults
-/odmdtbo                  emmc     /dev/block/by-name/odmdtbo                               defaults defaults
-/dtbo                     emmc     /dev/block/by-name/dtbo                                  defaults defaults
-/otp                      emmc     /dev/block/by-name/otp                                   defaults defaults
-/vbmeta                   emmc     /dev/block/by-name/vbmeta                                defaults defaults
+як/system ext4 system_a0
+
+1/vendor ext4 vendor_a 0
+
+2/product ext4 product_a0
+
+3/metadata
+
+ext4 /dev/block/by-name/metada
+
+4/data f2fs /dev/block/by-name/userdata
+
+5/mnt/vendor/protect_f
+
+ext4 /dev/block/by
+
+6/mnt/vendor/protect_s
+
+ext4 /dev/block/by
+
+7/mnt/vendor/nvdata
+
+ext4 /dev/block/by-na
+
+8/mnt/vendor/nvcfg
+
+ext4 /dev/block/by-nam
+
+9/mnt/vendor/persist ext4 /dev/block/by-n
+
+10
+
+auto auto /devices/platform/externdevic
+
+11
+
+auto vfat /devices/platform/mt_usb* 0
+
+12/persistent emmc /dev/block/by-name/frp
+
+13/nvram emmc /dev/block/by-name/nvram
+
+14/proinfo emmc /dev/block/by-name/proinf
+
+15
+
+/bootloader emmc /dev/block/by-name/lk
+
+16/bootloader2 emmc /dev/block/by-name/lk
+
+17/para emmc /dev/block/by-name/para
+
+18/misc emmc /dev/block/by-name/misc
+
+19/boot emmc /dev/block/by-name/boot_a0
+
+20/vbmeta_vendor emmc /dev/block/by-name/
+
+0
+
+21/vbmeta_system emmc /dev/block/by-name/
+
+0
+
+22/logo
+
+emmc /dev/block/by-name/logo 0
+
+23/expdb
+
+emmc /dev/block/by-name/expdb
+
+24/seccfg
+
+emmc /dev/block/by-name/seccfg
+
+25/teel
+
+emmc /dev/block/by-name/teel 0
+
+26/tee2 emmc /dev/block/by-name/tee20
+
+27/scp1
+
+emmc /dev/block/by-name/scp10
+
+28/scp2 emmc /dev/block/by-name/scp20
+
+29/sspm_1 emmc /dev/block/by-name/sspm_1
+
+30/sspm_2 emmc /dev/block/by-name/sspm_2
+
+31/mdlimg emmc /dev/block/by-name/md1img
+
+32/md1dsp emmc /dev/block/by-name/md1dsp
+
+/gz1 emmc /dev/block/by-name/gz1 0
+
+/gz2 emmc /dev/block/by-name/gz20
+
+/spmfw emmc /dev/block/by-name/spmfw0
+
+/pi_img emmc /dev/block/by-name/pi_img
+
+/boot_para emmc /dev/block/by-name/boot
+
+dtbo emmc /dev/block/by-name/dtbo
+
+otp emmc /dev/block/by-name/otp
+
+vbmeta emmc /dev/block/by-name/vbmeta
+
+tmp ramdisk ramdisk 0
+
