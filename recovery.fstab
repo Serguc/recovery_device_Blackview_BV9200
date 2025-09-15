@@ -1,84 +1,42 @@
 /system ext4 system_a
-
 /vendor ext4 vendor_a 
-
 /product ext4 product_a
-
 /metadata ext4 /dev/block/by-name/metada
-
 /data f2fs /dev/block/by-name/userdata
-
 /mnt/vendor/protect_f ext4 /dev/block/by-name/protect1
-
 /mnt/vendor/protect_s ext4 /dev/block/by-name/protect2
-
 /mnt/vendor/nvdata ext4 /dev/block/by-name/nvdata
-
 /mnt/vendor/nvcfg ext4 /dev/block/by-name/nvcfg
-
 /mnt/vendor/persist ext4 /dev/block/by-name/persist
-
 auto auto /devices/platform/externdevic
-
 auto vfat /devices/platform/mt_usb* 
-
 /persistent emmc /dev/block/by-name/frp
-
 /nvram emmc /dev/block/by-name/nvram
-
 /proinfo emmc /dev/block/by-name/proinf
-
 /bootloader emmc /dev/block/by-name/lk
-
 /bootloader2 emmc /dev/block/by-name/lk
-
 /para emmc /dev/block/by-name/para
-
 /misc emmc /dev/block/by-name/misc
-
 /boot emmc /dev/block/by-name/boot_a0
-
 /vbmeta_vendor emmc /dev/block/by-name/
-
 /vbmeta_system emmc /dev/block/by-name/
-
 /logo emmc /dev/block/by-name/logo
-
 /expdb emmc /dev/block/by-name/expdb
-
 /seccfg emmc /dev/block/by-name/seccfg
-
 /teel emmc /dev/block/by-name/teel 
-
 /tee2 emmc /dev/block/by-name/tee20
-
 /scp1 emmc /dev/block/by-name/scp10
-
 /scp2 emmc /dev/block/by-name/scp20
-
 /sspm_1 emmc /dev/block/by-name/sspm_1
-
 /sspm_2 emmc /dev/block/by-name/sspm_2
-
 /mdlimg emmc /dev/block/by-name/md1img
-
 /md1dsp emmc /dev/block/by-name/md1dsp
-
 /gz1 emmc /dev/block/by-name/gz1 
-
 /gz2 emmc /dev/block/by-name/gz20
-
 /spmfw emmc /dev/block/by-name/spmfw
-
 /pi_img emmc /dev/block/by-name/pi_img
-
 /boot_para emmc /dev/block/by-name/boot
-
 dtbo emmc /dev/block/by-name/dtbo
-
 otp emmc /dev/block/by-name/otp
-
 vbmeta emmc /dev/block/by-name/vbmeta
-
 tmp ramdisk ramdisk 
-
