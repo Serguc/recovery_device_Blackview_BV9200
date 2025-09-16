@@ -17,13 +17,15 @@ LOCAL_PATH := device/Blackview/BV9200
 PRODUCT_TARGET_VNDK_VERSION := 31
 
 # API
-PRODUCT_SHIPPING_API_LEVEL := 31
+PRODUCT_SHIPPING_API_LEVEL := 30
 
 # Dynamic
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
-# V A/B
+# Virtual_ab_ota
+AB_OTA_UPDATER := true
 ENABLE_VIRTUAL_AB := true
+#TARGET_ENFORCE_AB_OTA_PARTITION_LIST := true
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
 
 # Bootctrl
