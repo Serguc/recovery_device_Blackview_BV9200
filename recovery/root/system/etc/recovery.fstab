@@ -1,3 +1,4 @@
+#<src>              <type> <mnt_point>                                     <flags>
 /system ext4 system_a
 /vendor ext4 vendor_a 
 /product ext4 product_a
