@@ -32,10 +32,11 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_ven
 PRODUCT_PACKAGES += \
    android.hardware.boot@1.2-mtkimpl \
    android.hardware.boot@1.2-mtkimpl.recovery \
-   android.hardware.boot@1.2-service
+   android.hardware.boot@1.2-service \
+   bootctrl
 
-PRODUCT_PACKAGES_DEBUG += \
-    bootctrl
+#PRODUCT_PACKAGES_DEBUG += \
+ #   bootctrl
 
 # Fastbootd
 PRODUCT_PACKAGES += \
@@ -46,7 +47,34 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.health@2.0-impl-2.1 \
     android.hardware.health@2.1-service
-    
+
+# Suspend service
+TARGET_RECOVERY_DEVICE_MODULES += \
+    libSuspendProperties \
+    android.system.suspend@1.0 \
+    android.system.suspend-service \
+
+RECOVERY_LIBRARY_SOURCE_FILES += $(TARGET_OUT_SHARED_LIBRARIES)/libSuspendProperties.so
+RECOVERY_LIBRARY_SOURCE_FILES += $(TARGET_OUT_SHARED_LIBRARIES)/android.system.suspend@1.0.so
+RECOVERY_LIBRARY_SOURCE_FILES += $(TARGET_OUT_SHARED_LIBRARIES)/android.system.suspend-V1-ndk.so
+RECOVERY_LIBRARY_SOURCE_FILES += $(TARGET_OUT_SHARED_LIBRARIES)/android.system.suspend.control-V1-cpp.so
+RECOVERY_LIBRARY_SOURCE_FILES += $(TARGET_OUT_SHARED_LIBRARIES)/android.system.suspend.control.internal-cpp.so
+RECOVERY_BINARY_SOURCE_FILES += $(TARGET_OUT_EXECUTABLES)/hw/android.system.suspend-service
+
+# Keymaster
+PRODUCT_PACKAGES += \
+    android.hardware.keymaster@4.1-service.trustkernel.vendor \
+    android.hardware.keymaster@4.0 \
+    android.hardware.keymaster@4.1 \
+
+# Gatekeeper
+PRODUCT_PACKAGES += \
+    android.hardware.gatekeeper@1.0.vendor \
+    android.hardware.gatekeeper@1.0-impl \
+    android.hardware.gatekeeper@1.0-service \
+
+RECOVERY_LIBRARY_SOURCE_FILES += $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/android.hardware.gatekeeper-V1-ndk.so
+
 # AB
 AB_OTA_UPDATER := true
 
@@ -82,33 +110,6 @@ PRODUCT_PACKAGES += \
 # MTK PlPath Utils
 PRODUCT_PACKAGES += \
     mtk_plpath_utils.recovery
-
-# Suspend service
-TARGET_RECOVERY_DEVICE_MODULES += \
-    libSuspendProperties \
-    android.system.suspend@1.0 \
-    android.system.suspend-service \
-
-RECOVERY_LIBRARY_SOURCE_FILES += $(TARGET_OUT_SHARED_LIBRARIES)/libSuspendProperties.so
-RECOVERY_LIBRARY_SOURCE_FILES += $(TARGET_OUT_SHARED_LIBRARIES)/android.system.suspend@1.0.so
-RECOVERY_LIBRARY_SOURCE_FILES += $(TARGET_OUT_SHARED_LIBRARIES)/android.system.suspend-V1-ndk.so
-RECOVERY_LIBRARY_SOURCE_FILES += $(TARGET_OUT_SHARED_LIBRARIES)/android.system.suspend.control-V1-cpp.so
-RECOVERY_LIBRARY_SOURCE_FILES += $(TARGET_OUT_SHARED_LIBRARIES)/android.system.suspend.control.internal-cpp.so
-RECOVERY_BINARY_SOURCE_FILES += $(TARGET_OUT_EXECUTABLES)/hw/android.system.suspend-service
-
-# Keymaster
-PRODUCT_PACKAGES += \
-    android.hardware.keymaster@4.1-service.trustkernel.vendor \
-    android.hardware.keymaster@4.0 \
-    android.hardware.keymaster@4.1 \
-
-# Gatekeeper
-PRODUCT_PACKAGES += \
-    android.hardware.gatekeeper@1.0.vendor \
-    android.hardware.gatekeeper@1.0-impl \
-    android.hardware.gatekeeper@1.0-service \
-
-RECOVERY_LIBRARY_SOURCE_FILES += $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/android.hardware.gatekeeper-V1-ndk.so
 
 # Additional binaries & libraries needed for recovery
 TARGET_RECOVERY_DEVICE_MODULES += \
