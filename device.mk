@@ -31,7 +31,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_ven
 # Bootctrl
 PRODUCT_PACKAGES += \
    android.hardware.boot@1.2-mtkimpl \
-    android.hardware.boot@1.2-mtkimpl.recovery
+   android.hardware.boot@1.2-mtkimpl.recovery \
+   android.hardware.boot@1.2-service
 
 PRODUCT_PACKAGES_DEBUG += \
     bootctrl
@@ -112,10 +113,14 @@ RECOVERY_LIBRARY_SOURCE_FILES += $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/android.h
 # Additional binaries & libraries needed for recovery
 TARGET_RECOVERY_DEVICE_MODULES += \
     libion \
+    libkeymaster4 \
+    libkeymaster41 \
     libpuresoftkeymasterdevice
 
 TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
     $(TARGET_OUT_SHARED_LIBRARIES)/libion.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster4.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster41.so \
     $(TARGET_OUT_SHARED_LIBRARIES)/libpuresoftkeymasterdevice.so \
     $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.vibrator-V1-ndk_platform.so \
 
@@ -130,4 +135,4 @@ PRODUCT_COPY_FILES += \
 
 # Otacert
 PRODUCT_EXTRA_RECOVERY_KEYS += \
-    $(LOCAL_PATH)/security/releasekey
+    $(LOCAL_PATH)/security/otacert
