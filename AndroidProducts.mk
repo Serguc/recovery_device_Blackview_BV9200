@@ -16,8 +16,5 @@
 
 PRODUCT_MAKEFILES := $(LOCAL_DIR)/twrp_BV9200.mk
 
-COMMON_LUNCH_CHOICES := \
-    twrp_BV9200-user \
-    twrp_BV9200-userdebug \
-    twrp_BV9200-eng
-
+COMMON_LUNCH_CHOICES := twrp_BV9200-eng
+    
