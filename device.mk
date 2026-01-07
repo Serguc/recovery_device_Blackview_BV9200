@@ -11,7 +11,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 # Installs gsi keys into ramdisk, to boot a GSI with verified boot.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 
-LOCAL_PATH := device/Blackview/BV9200
+LOCAL_PATH := device/blackview/BV9200
 
 # VNDK
 PRODUCT_TARGET_VNDK_VERSION := 31
@@ -131,8 +131,8 @@ RECOVERY_BINARY_SOURCE_FILES += $(TARGET_OUT_EXECUTABLES)/snapuserd
 
 # Vendor ramdisk
 PRODUCT_COPY_FILES += \
-     device/Blackview/BV9200/fstab.emmc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.emmc \
-     device/Blackview/BV9200/fstab.mt6789:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.mt6789
+     device/blackview/BV9200/fstab.emmc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.emmc \
+     device/blackview/BV9200/fstab.mt6789:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.mt6789
 
 # Otacert
 PRODUCT_EXTRA_RECOVERY_KEYS += \
