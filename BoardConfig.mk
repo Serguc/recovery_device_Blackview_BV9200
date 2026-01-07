@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-DEVICE_PATH := device/Blackview/BV9200
+DEVICE_PATH := device/blackview/BV9200
 
 # For building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true
@@ -202,10 +202,6 @@ TW_LOAD_PREBUILT_MODULES := true
 
 # Apex
 TW_EXCLUDE_APEX=true
-
-# Hack to get keymaster to recognize the key files
-PLATFORM_SECURITY_PATCH := 2099-12-05
-VENDOR_SECURITY_PATCH := 2023-11-05
 
 # Maintainer specific settings
 #TW_DEVICE_VERSION := Serguc
